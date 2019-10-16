@@ -53,21 +53,23 @@
                 hide-actions
                 v-model="selected"
                 item-key="Question"
-                select-all
                 class="elevation-0 table-striped"
               >
                 <template slot="items" slot-scope="props">
-                  <td>
+                  <!-- <td>
                     <v-checkbox
                       primary
                       hide-details
                       v-model="props.selected"
                     ></v-checkbox>
-                  </td>
+                  </td> -->
+
+                  <td><v-switch @click="change(props.item)" hide-details color="info" v-model="props.item.enabled"></v-switch></td>
                   <td class="text-xs-left">{{ props.item.Question }}</td>
                   <td class="text-xs-left">{{ props.item.Command }}</td>
                   <td class="text-xs-left">{{ props.item.Answer }}</td>
                   <td class="text-xs-center">
+
                     <v-btn flat icon color="grey" @click="editItem(props.item)">
                       <v-icon>edit</v-icon>
                     </v-btn>
@@ -109,6 +111,7 @@
     data:()=>({
       dialog: false,
       userName:'',
+      s1:true,
       imgURL:'',
       selected:[],
       headers: [
@@ -154,12 +157,23 @@
       this.update()
     },
     methods: {
+      change(param){
+        console.log(param)
+        const api = axios.create({
+          withCredentials: true
+        });
+        api.put('http://211.254.217.44:8893/customQA/'+param.id, param)
+        .then(()=>{
+          this.update()
+        })
+      },
       update () {
         const api = axios.create({
           withCredentials: true
         });
         api.get('http://211.254.217.44:8893/customQA')
         .then((result) => {
+          console.log(result)
           this.questions = result.data.QAlist
           this.userName = result.data.userName
           this.imgURL = result.data.userImg
@@ -177,7 +191,7 @@
         const api = axios.create({
           withCredentials: true
         });
-        // confirm('Are you sure you want to delete this item?') &&
+        confirm('Are you sure you want to delete this item?') &&
         api.delete('http://211.254.217.44:8893/customQA/'+this.questions[index].id)
         .then(()=>{
           this.update()
@@ -193,23 +207,28 @@
       },
 
       save () {
-        const api = axios.create({
-          withCredentials: true
-        });
-        if (this.editedIndex > -1) {
-          // this.questions[this.editedIndex] = this.editedItem
-          api.put('http://211.254.217.44:8893/customQA/'+this.questions[this.editedIndex].id, this.editedItem)
-          .then(()=>{
-            this.update()
-          })
-        } else {
-          // this.questions.push(this.editedItem);
-          api.post('http://211.254.217.44:8893/customQA',this.editedItem)
-          .then(()=>{
-            this.update()
-          })
+        if(this.editedItem.Command===''||this.editedItem.Question===''||this.editedItem.Answer===''){
+          alert('빈칸은 싫어요!')
         }
-        this.close()
+        else{
+          const api = axios.create({
+            withCredentials: true
+          });
+          if (this.editedIndex > -1) {
+            // this.questions[this.editedIndex] = this.editedItem
+            api.put('http://211.254.217.44:8893/customQA/'+this.questions[this.editedIndex].id, this.editedItem)
+            .then(()=>{
+              this.update()
+            })
+          } else {
+            // this.questions.push(this.editedItem);
+            api.post('http://211.254.217.44:8893/customQA',this.editedItem)
+            .then(()=>{
+              this.update()
+            })
+          }
+          this.close()
+        }
       },
 
     }

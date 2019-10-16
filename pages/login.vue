@@ -58,6 +58,10 @@
   };
 </script>
 <style scoped lang="css">
+  @import url(http://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
+  td,div {
+    font-family: 'Nanum Barun Gothic', sans-serif;
+  }
   #login {
     height: 50%;
     width: 100%;
@@ -67,4 +71,5 @@
     content: "";
     z-index: 0;
   }
+
 </style>
