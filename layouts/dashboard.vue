@@ -11,20 +11,22 @@
             <nuxt/>
           </div>
           <!-- App Footer -->
-          <v-footer height="auto" class="white pa-3 app--footer">
+          <v-footer height="auto" class="white pa-2 app--footer">
             <span class="caption">&copy; {{ new Date().getFullYear() }}</span>
             <v-spacer></v-spacer>
-            <span class="caption mr-1"> 한승호 바보 ㄹㅇ ㅋㅋ </span>
+            <span class="caption mr-1">  </span>
             <!-- <v-icon color="pink" small>favorite</v-icon> -->
           </v-footer>
         </v-content>
         <!-- Go to top -->
         <app-fab></app-fab>
         <!-- theme setting -->
-        <v-btn small fab dark falt fixed top="top" right="right" class="setting-fab" color="red"
+
+
+        <!-- <v-btn small fab dark falt fixed top="top" right="right" class="setting-fab" color="red"
                @click="openThemeSettings">
           <v-icon>settings</v-icon>
-        </v-btn>
+        </v-btn> -->
         <v-navigation-drawer
           class="setting-drawer"
           temporary
@@ -37,7 +39,13 @@
         </v-navigation-drawer>
       </v-app>
     </template>
-
+    <v-btn v-if="this.isOpen===false" color="primary" @click="open" fab dark style="width: 60px;  height: 60px;  position: fixed;  right: 25px; bottom: 50px;">
+      <v-icon>edit</v-icon>
+    </v-btn>
+    <v-btn v-else color="primary" @click="closeChatting" fab dark style="width: 60px;  height: 60px;  position: fixed;  right: 385px; bottom: 50px;">
+      <v-icon>edit</v-icon>
+    </v-btn>
+    <ChattingRoom v-if="this.isOpen===true" v-on:close="closeChatting"></ChattingRoom>
 
     <v-snackbar
       :timeout="3000"
@@ -60,6 +68,7 @@
   import AppFab from '@/components/AppFab'
   import PageHeader from '@/components/PageHeader'
   import ThemeSettings from '@/components/ThemeSettings'
+  import ChattingRoom from '@/pages/forChat/ChattingRoom.vue'
 
   export default {
     components: {
@@ -67,19 +76,29 @@
       AppToolbar,
       AppFab,
       PageHeader,
-      ThemeSettings
+      ThemeSettings,
+      ChattingRoom,
     },
     data: () => ({
+      isOpen: false,
       expanded: true,
       rightDrawer: false,
       snackbar: {
         show: false,
         text: '',
         color: '',
-      }
+      },
+
     }),
 
     methods: {
+
+      open(){
+        this.isOpen = true
+      },
+      closeChatting(){
+        this.isOpen = false
+      },
       openThemeSettings() {
         this.$vuetify.goTo(0)
         this.rightDrawer = (!this.rightDrawer)
@@ -89,6 +108,8 @@
 </script>
 
 <style lang="stylus" scoped>
+
+
   .setting-fab
     top: 50% !important;
     right: 0;
