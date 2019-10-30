@@ -5,32 +5,23 @@
     dark
     app
   >
-    <v-toolbar-title class="ml-0 pl-3">
+    <v-toolbar-title class="ml-0">
       <v-toolbar-side-icon @click.stop="toggleDrawer()"></v-toolbar-side-icon>
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn icon @click="handleFullScreen()">
       <v-icon>fullscreen</v-icon>
     </v-btn>
-    <v-menu offset-y origin="center center" class="elelvation-1" :nudge-right="140" :nudge-bottom="14" transition="scale-transition">
-      <v-btn icon flat slot="activator">
-        <v-badge color="red" overlap>
-          <span slot="badge">3</span>
-          <v-icon medium>notifications</v-icon>
-        </v-badge>
-      </v-btn>
-      <notification-list></notification-list>
-    </v-menu>
     <v-menu offset-y origin="center center" :nudge-right="140" :nudge-bottom="10" transition="scale-transition">
       <v-btn icon large flat slot="activator">
         <v-avatar size="30px">
-          <img src="../static/avatar/man_4.jpg" alt="Michael Wang"/>
+          <img v-bind:src="user.userImg" alt="userImg"/>
         </v-avatar>
       </v-btn>
       <v-list class="pa-0">
-        <v-list-tile @click="">
+        <v-list-tile @click="gotoChannel()">
           <v-list-tile-content>
-            <v-list-tile-title>username</v-list-tile-title>
+            <v-list-tile-title>{{this.user.userName}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile v-for="(item,index) in items" :to="!item.href ? { name: item.name } : null" :href="item.href"
@@ -48,6 +39,7 @@
   </v-toolbar>
 </template>
 <script>
+  import axios from 'axios';
   import NotificationList from '@/components/widgets/list/NotificationList';
   import Util from '@/util';
 
@@ -58,6 +50,7 @@
     },
     data:  function () {
       return {
+        user:{"userName":"","userImg":"","channel":""},
         items: [
           {
             icon: 'account_circle',
@@ -84,12 +77,27 @@
         ],
       }
     },
+    created: function() {
+      this.update()
+    },
     computed: {
       toolbarColor() {
         return this.$vuetify.options.extra.mainNav;
       }
     },
     methods: {
+      gotoChannel(){
+        window.location.href = this.user.channel
+      },
+      update() {
+        const api = axios.create({
+          withCredentials: true
+        });
+        api.get('http://211.254.217.44:8893/user')
+        .then((result) => {
+          this.user = result.data
+        })
+      },
       toggleDrawer() {
         this.$store.commit('toggleDrawer')
       },

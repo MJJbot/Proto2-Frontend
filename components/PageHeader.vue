@@ -3,16 +3,10 @@
   <div class="page-header-left">
     <h3 class="pr-3">{{title}}</h3>
   </div>
-  <v-icon>home</v-icon>
   <v-breadcrumbs divider="-" :items="breadcrumbs">
 
   </v-breadcrumbs>
-  <v-spacer></v-spacer>
-  <div class="page-header-right">
-    <v-btn icon>
-      <v-icon class="text--secondary">refresh</v-icon>
-    </v-btn>
-  </div>
+
 </v-layout>
 </template>
 
@@ -40,7 +34,7 @@ computed: {
       } else {
         if (item.href === this.$route.path) {
           this.title = item.title;
-          breadcrumbs.push({text: item.title});
+          // breadcrumbs.push({text: item.title});
         }
       }
     });

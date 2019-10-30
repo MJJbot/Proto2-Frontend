@@ -9,9 +9,8 @@
     width="260"
   >
     <v-toolbar color="primary darken-1" dark>
-      <img src="../static/m.png" height="36" alt="Vue Material Admin Template">
       <v-toolbar-title class="ml-0 pl-3">
-        <span class="hidden-sm-and-down">Mujinjang BOT</span>
+        <span class="hidden-sm-and-down mjj">{{title}}</span>
       </v-toolbar-title>
     </v-toolbar>
     <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">
@@ -88,6 +87,7 @@
       },
     },
     data: () => ({
+      title: '무진장 봇',
       mini: false,
       menus: menu,
       scrollSettings: {
@@ -126,6 +126,16 @@
 
 
 <style lang="stylus">
+  @font-face {
+    font-family: 'mjj';
+    src: url(../static/font/mjj.ttf) format('truetype');
+  }
+  .mjj {
+    padding-left: 20px;
+    font-family: mjj
+    font-size: 40px;
+  }
+
   #appDrawer
     overflow: hidden
     .drawer-menu--scroll
