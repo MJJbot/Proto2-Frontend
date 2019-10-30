@@ -2,11 +2,11 @@
   <div class="chat-history">
     <v-toolbar dense class="chat-history-toolbar">
       <v-text-field flat solo full-width clearable prepend-icon="search" label="Search"></v-text-field>
-    </v-toolbar>  
+    </v-toolbar>
     <vue-perfect-scrollbar class="chat-history--scrollbar">
-      <v-divider></v-divider>             
+      <v-divider></v-divider>
       <v-list two-line class="chat-history--list">
-        <v-subheader>History</v-subheader>
+        <v-subheader>채팅 목록</v-subheader>
         <template v-for="(item, index) in chats">
           <v-divider :key="index"></v-divider>
           <v-list-tile class="chat-list" avatar :key="item.title + index" :to="chatRoute(item.uuid)">
@@ -16,7 +16,7 @@
             </v-list-tile-avatar>
             <v-list-tile-content>
               <v-list-tile-title> {{computeTitle(item)}}</v-list-tile-title>
-              <v-list-tile-sub-title>Some Latest message</v-list-tile-sub-title>
+              <v-list-tile-sub-title>{{computeTitle2(item)}}</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
               <v-list-tile-action-text>
@@ -26,8 +26,8 @@
             </v-list-tile-action>
           </v-list-tile>
         </template>
-      </v-list>  
-    </vue-perfect-scrollbar>  
+      </v-list>
+    </vue-perfect-scrollbar>
   </div>
 </template>
 
@@ -61,8 +61,12 @@ export default {
       let username = (item.users.length === 1) ? getUserById(item.users[0]).username : '';
       return item.users.length === 1 ? username : item.title;
     },
+    computeTitle2 (item) {
+      let username = (item.users.length === 1) ? getUserById(item.users[0]).name : '';
+      return item.users.length === 1 ? username : item.title;
+    },
     randomAvatarColor (item) {
-      return item.users.length === 1 
+      return item.users.length === 1
         ? ''
         : Util.randomElement(['blue', 'indigo', 'success', 'error', 'pink']);
     },
@@ -70,7 +74,6 @@ export default {
     chatStatusColor (item) {
       return Util.randomElement(['blue', 'indigo', 'success', 'error', 'pink']);
     }
-  }  
+  }
 };
 </script>
-

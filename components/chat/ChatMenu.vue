@@ -3,7 +3,7 @@
     <div>
       <v-btn icon large flat slot="activator">
         <v-avatar>
-          <img src="../../static/avatar/man_4.jpg" alt="Micahel Wang">
+          <img v-bind:src="user.userImg" alt="userImg"/>
         </v-avatar>
       </v-btn>
     </div>
@@ -14,18 +14,38 @@
           <v-icon :color="item.iconColor" class="mini-icon" size="36">{{ item.icon }}</v-icon>
         </v-list-tile>
       </template>
-    </v-list>          
+    </v-list>
 </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+  data(){
+    return{
+      user:{},
+    }
+  },
   props: {
     items: {
       type: Array,
     }
   },
-
+  created: function() {
+    this.update()
+  },
+  methods: {
+    update() {
+      const api = axios.create({
+        withCredentials: true
+      });
+      api.get('http://211.254.217.44:8893/user')
+      .then((result) => {
+        this.user = result.data
+      })
+    },
+  }
 };
 </script>
 
@@ -33,5 +53,5 @@ export default {
   .mini-tile
     a.list__tile--active
       background:hsla(0,0%,100%,.12)
- 
+
 </style>
