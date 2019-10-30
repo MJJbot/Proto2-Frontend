@@ -43,26 +43,11 @@
 </template>
 
 <script>
-  import API from '@/api';
-  import EChart from '@/components/chart/echart';
-  import MiniStatistic from '@/components/widgets/statistic/MiniStatistic';
-  import PostListCard from '@/components/widgets/card/PostListCard';
-  import ProfileCard from '@/components/widgets/card/ProfileCard';
-  import PostSingleCard from '@/components/widgets/card/PostSingleCard';
-  import WeatherCard from '@/components/widgets/card/WeatherCard';
-  import PlainTable from '@/components/widgets/list/PlainTable';
-  import PlainTableOrder from '@/components/widgets/list/PlainTableOrder';
-  import VWidget from '@/components/VWidget';
-  import Material from 'vuetify/es5/util/colors';
-  import VCircle from '@/components/circle/VCircle';
-  import BoxChart from '@/components/widgets/chart/BoxChart';
-  import ChatWindow from '@/components/chat/ChatWindow';
-  import CircleStatistic from '@/components/widgets/statistic/CircleStatistic';
-  import LinearStatistic from '@/components/widgets/statistic/LinearStatistic';
-
   export default {
+
     layout: 'dashboard',
     data: () => ({
+
       bot:false,
       dialog:false,
     }),
@@ -75,7 +60,15 @@
         //봇 퇴장시 api호출!
         this.bot = false
       },
+      
     }
 
   };
 </script>
+
+<style>
+  @import url(http://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
+  td,div {
+    font-family: 'Nanum Barun Gothic', sans-serif;
+  }
+</style>

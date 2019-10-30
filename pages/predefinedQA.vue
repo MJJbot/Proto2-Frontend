@@ -2,23 +2,17 @@
   <v-container grid-list-xl fluid>
     <v-layout row wrap>
       <v-flex sm12>
-        <h3>pre-defined Questions</h3>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
-        <div>스트리밍 중 자주 나오는 질문들에 대한 답변을 만들어 보세요.</div>
+        <div>자주 나오는 질문들을 제공해 드립니다.</div>
       </v-flex>
       <v-flex lg12 sm12>
         <div slot="widget-content">
           <div class="basic">
             <v-radio-group v-model="search" :mandatory="true" row>
-              <v-radio label="전체" value="" color="pink"></v-radio>
-              <v-radio label="프로필" value="프로필" color="secondary"></v-radio>
-              <v-radio label="방송 설정" value="방송 설정" color="teal"></v-radio>
-              <v-radio label="게임 설정" value="장비 설정" color="teal"></v-radio>
-              <v-radio label="게임 설정" value="게임 설정" color="teal"></v-radio>
+              <v-radio label="전체" value="" color="#1d64aa"></v-radio>
+              <v-radio label="프로필" value="프로필" color="#1d64aa"></v-radio>
+              <v-radio label="방송 설정" value="방송 설정" color="#1d64aa"></v-radio>
+              <v-radio label="게임 설정" value="장비 설정" color="#1d64aa"></v-radio>
+              <v-radio label="게임 설정" value="게임 설정" color="#1d64aa"></v-radio>
             </v-radio-group>
           </div>
         </div>
@@ -37,21 +31,21 @@
             <v-dialog v-model="dialog" persistent max-width="500px">
               <v-card>
                 <v-card-title class="headline grey lighten-3">
-                  <span class="headline">Q&A 수정</span>
+                  <span class="headline">{{editedItem.type}}</span>
                 </v-card-title>
                 <v-divider></v-divider>
                 <v-card-text>
                   <v-container grid-list-md>
                     <v-layout wrap>
                       <v-flex xs12>
-                        <v-text-field v-if="editedIndex===-1" v-model="editedItem.Question" label="질문"></v-text-field>
-                        <v-text-field v-else v-model="editedItem.Question" disabled label="질문"></v-text-field>
+                        <v-text-field v-if="editedIndex===-1" v-model="editedItem.command" label="명령어"></v-text-field>
+                        <v-text-field v-else v-model="editedItem.command" disabled label="명령어"></v-text-field>
                       </v-flex>
                       <v-flex xs12>
-                        <v-text-field v-model="editedItem.Command" label="명령어"></v-text-field>
+                        <v-text-field v-model="editedItem.question" disabled label="질문 예시"></v-text-field>
                       </v-flex>
                       <v-flex xs12>
-                        <v-text-field v-model="editedItem.Answer" label="답변"></v-text-field>
+                        <v-text-field v-model="editedItem.answer" label="답변"></v-text-field>
                       </v-flex>
                     </v-layout>
                   </v-container>
@@ -74,22 +68,15 @@
               hide-actions
               class="elevation-1"
               item-key="Question"
-              select-all
               v-model="selected"
             >
               <template slot="items" slot-scope="props">
-                <td>
-                  <v-checkbox
-                    primary
-                    hide-details
-                    v-model="props.selected"
-                  ></v-checkbox>
-                </td>
-                <td>{{ props.item.Category }}</td>
-                <td>{{ props.item.Type }}</td>
-                <td>{{ props.item.Question }}</td>
-                <td>{{ props.item.Command }}</td>
-                <td>{{ props.item.Answer }}</td>
+                <td><v-switch v-on:change="change(props.item)" hide-details color="#1d64aa" v-model="props.item.enabled"></v-switch></td>
+                <td>{{ props.item.category }}</td>
+                <td>{{ props.item.type }}</td>
+                <td>{{ props.item.question }}</td>
+                <td>{{ props.item.command }}</td>
+                <td>{{ props.item.answer }}</td>
                 <td class="text-xs-center">
                   <v-btn flat icon color="grey" @click="editItem(props.item)">
                     <v-icon>edit</v-icon>
@@ -124,52 +111,55 @@
         search:'',
         editedIndex:-1,
         editedItem: {
+          enabled:true,
           type:'',
-          Question: '',
-          Answer: '',
-          Command: ''
+          question: '',
+          answer: '',
+          command: ''
         },
         headers: [
-          {text:'카테고리',value:'Category',sortable: false,},
+          {text:'On/Off',value:'',sortable:false},
+          {text:'카테고리',value:'category',sortable: false,},
           {
             text: '질문유형',
             align: 'left',
             sortable: false,
-            value: 'Type'
+            value: 'type'
           },
-          { text: '질문 예시', value: 'Question',sortable: false,},
-          { text: '명령어', value: 'Command',sortable: false, },
-          { text: '답변 예시', value: 'Answer',sortable: false,filterable: false, },
+          { text: '질문 예시', value: 'question',sortable: false,},
+          { text: '명령어', value: 'command',sortable: false, },
+          { text: '답변 예시', value: 'answer',sortable: false,filterable: false, },
           { text: 'Action', value: 'action', sortable: false, align:'center' },
 
         ],
         questions:[
-        {Category:"프로필",Type:"이름",Question:"이름이 뭐에요?",Command:"!이름",Answer:"게임 방송하는 김민재라고합니다.",c_id:"1"},
-        {Category:"프로필",Type:"나이",Question:"나이가 어떻게 되세요?",Command:"!나이",Answer:"21살입니다.",c_id:"1"},
-        {Category:"방송 설정",Type:"게임",Question:"오늘 게임 뭐해요?",Command:"!오늘게임",Answer:"1부 롤, 2부 하스스톤입니다.",c_id:"2"},
-        {Category:"장비 설정",Type:"마우스",Question:"마우스 뭐 쓰세요?",Command:"!마우스",Answer:"",c_id:"3"},
-        {Category:"프로필",Type:"롤티어",Question:"지금 롤 티어가 어디임?",Command:"!롤티어",Answer:"",c_id:"3"}
         ],
-        colors: {
-          processing: 'blue',
-          sent: 'red',
-          delivered: 'green'
-        }
       };
     },
     created: function() {
       this.update()
     },
     computed: {
-
     },
     methods: {
+      change(param){
+        // console.log(param)
+        const api = axios.create({
+          withCredentials: true
+        });
+        setTimeout(100)
+        api.put('http://211.254.217.44:8893/predefinedQA/'+param.qid, param)
+        .then(()=>{
+          this.update()
+        })
+      },
       update () {
         const api = axios.create({
           withCredentials: true
         });
         api.get('http://211.254.217.44:8893/predefinedQA')
         .then((result) => {
+          console.log(result.data)
           this.questions = result.data.QAlist
           this.userName = result.data.userName
           this.imgURL = result.data.userImg
@@ -188,7 +178,7 @@
           withCredentials: true
         });
         // confirm('Are you sure you want to delete this item?') &&
-        api.delete('http://211.254.217.44:8893/predefinedQA/'+this.questions[index].id)
+        api.delete('http://211.254.217.44:8893/predefinedQA/'+this.questions[index].qid)
         .then(()=>{
           this.update()
         })
@@ -203,14 +193,21 @@
       },
 
       save () {
-        const api = axios.create({
-          withCredentials: true
-        });
-        api.put('http://211.254.217.44:8893/predefinedQA/'+this.questions[this.editedIndex].id, this.editedItem)
-        .then((result) => {
-          this.update()
-        })
-        this.close()
+        if(this.editedItem.answer===''){
+          alert('빈칸은 싫어요!')
+        }
+        else{
+          const api = axios.create({
+            withCredentials: true
+          });
+          this.editedItem.enabled=true
+          api.put('http://211.254.217.44:8893/predefinedQA/'+this.questions[this.editedIndex].qid, this.editedItem)
+          .then((result) => {
+            console.log(this.editedItem)
+            this.update()
+          })
+          this.close()
+        }
       },
 
 
