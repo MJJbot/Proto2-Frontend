@@ -190,12 +190,12 @@ const Items =  [
   },
   {
     'uuid': 'afdb5033-5bcc-4cec-b932-353a83410b44',
-    'name': 'Jamey',
+    'name': '오늘 희성님이랑 듀오 하시나요?',
     'jobTitle': 'PHP Developer',
     'email': 'Jamey_Grant_Cruickshank73@gmail.com',
-    'username': 'Jamey_Grant',
+    'username': '괴물쥐123',
     'phone': '545-939-2404 x32373',
-    'avatar': 'https://s3.amazonaws.com/uifaces/faces/twitter/mikebeecham/128.jpg',
+    'avatar': 'https://static-cdn.jtvnw.net/jtv_user_pictures/59b10cc7-772e-48a9-92df-066e9a35862b-profile_image-70x70.jpg',
     'address': {
       'street': '38372 Mante Glen',
       'suite': 'Suite 090',
@@ -211,12 +211,12 @@ const Items =  [
   },
   {
     'uuid': '60d07662-bfec-42c7-b044-c81bc4ff8c7a',
-    'name': 'Barton',
+    'name': '허허 그거에 대해선 심심한 사과의 말씀 올립니다. 자세한건 유튜브 참고해주세요^.^',
     'email': 'Barton85_Emard@gmail.com',
     'jobTitle': 'Web Developer',
-    'username': 'Barton85',
+    'username': '침착맨',
     'phone': '(979) 560-8322 x174',
-    'avatar': 'https://s3.amazonaws.com/uifaces/faces/twitter/a_harris88/128.jpg',
+    'avatar': 'https://static-cdn.jtvnw.net/jtv_user_pictures/89e29e2e-f165-40e6-bc0c-d42205935216-profile_image-70x70.png',
     'address': {
       'street': '185 Florine Spurs',
       'suite': 'Suite 178',
@@ -232,12 +232,12 @@ const Items =  [
   },
   {
     'uuid': '5c44b666-baca-4f18-a3cb-23068c6edc14',
-    'name': 'Gloria',
+    'name': '잇츠미',
     'jobTitle': 'Assets',
     'email': 'Gloria78.Nicolas83@hotmail.com',
-    'username': 'Gloria78',
+    'username': '김민재__',
     'phone': '188.890.3246',
-    'avatar': 'https://s3.amazonaws.com/uifaces/faces/twitter/nehfy/128.jpg',
+    'avatar': 'https://static-cdn.jtvnw.net/jtv_user_pictures/6aae20e9-db8e-4c0a-8921-c665df9ca6f2-profile_image-300x300.png',
     'address': {
       'street': '643 Arch Mews',
       'suite': 'Apt. 171',
@@ -295,12 +295,12 @@ const Items =  [
   },
   {
     'uuid': 'da95e977-cd54-4077-a767-1b7f33ef6919',
-    'name': 'Murl',
+    'name': '아니요. 저 고양이 털 알레르기 있어요.',
     'email': 'Murl_Abshire41_Lakin@hotmail.com',
-    'username': 'Murl_Abshire41',
+    'username': '플러리',
     'jobTitle': 'Web Developer',
     'phone': '107-733-1219 x0615',
-    'avatar': 'https://s3.amazonaws.com/uifaces/faces/twitter/stayuber/128.jpg',
+    'avatar': 'https://static-cdn.jtvnw.net/jtv_user_pictures/262bfb4688af2c15-profile_image-70x70.jpeg',
     'address': {
       'street': '4880 Tanner Circles',
       'suite': 'Apt. 994',

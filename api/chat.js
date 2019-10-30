@@ -1,22 +1,12 @@
 import { getUser as User } from './user';
 // chat menu
 const Menu = [
-  { 
+  {
     text: 'Chat',
     icon: 'chat',
     to: { path: '/chat/messaging' },
   },
-  { 
-    text: 'Contacts',
-    icon: 'contacts',
-    to: { path: '/chat/contact' },
-  },
-  { 
-    text: 'File',
-    icon: 'insert_drive_file',
-    to: { path: '/chat/media' },
-  },
-  { 
+  {
     text: 'Settings',
     icon: 'settings',
     to: { path: '/chat/settings' },
@@ -31,18 +21,8 @@ const Groups = [
     'users': [
       'da95e977-cd54-4077-a767-1b7f33ef6919'
     ],
-    'created_by': '60d07662-bfec-42c7-b044-c81bc4ff8c7a',
-    'created_at': '2018-04-10T15:02:15.476Z'
-  },
-  {
-    'uuid': 'c86f170d-9a36-4f2c-bb76-2de65aa8c7bf',
-    'title': 'odio',
-    'users': [
-      '46d6f992-5729-4588-b7f8-ce74f21157ba',
-      '7d910620-84e1-49fc-951e-d375587b8189'
-    ],
-    'created_by': 'eef93cb1-7766-4413-a5cf-ecbf71fa3674',
-    'created_at': '2018-04-11T04:02:56.728Z'
+    'created_by': 'da95e977-cd54-4077-a767-1b7f33ef6919',
+    'created_at': '2019-10-30T15:02:15.476Z'
   },
   {
     'uuid': '9c750cd1-a04d-4b9b-afe2-3e5f1b8d04fa',
@@ -50,47 +30,8 @@ const Groups = [
     'users': [
       '60d07662-bfec-42c7-b044-c81bc4ff8c7a'
     ],
-    'created_by': 'bd30e201-cceb-410e-8497-a4072bc399f5',
-    'created_at': '2018-04-10T10:35:26.982Z'
-  },
-  {
-    'uuid': '0b29c8d1-6467-4680-9210-01d7669d47c1',
-    'title': 'placeat',
-    'users': [
-      'da95e977-cd54-4077-a767-1b7f33ef6919'
-    ],
-    'created_by': '6124d4e8-77ed-4b34-868d-d312bfab5de2',
-    'created_at': '2018-04-10T22:33:14.365Z'
-  },
-  {
-    'uuid': 'ff04dee6-34f0-4ac9-b38b-463a2e0227e9',
-    'title': 'minima',
-    'users': [
-      '5c44b666-baca-4f18-a3cb-23068c6edc14',
-      '14ddae1e-986d-42f4-8d17-46a02d469b2b'
-    ],
-    'created_by': 'ee272550-36e8-4fe2-889d-c1ee701c5863',
-    'created_at': '2018-04-10T07:56:08.876Z'
-  },
-  {
-    'uuid': '42e3d8f8-a097-4049-bd6e-53eab86f3722',
-    'title': 'ducimus',
-    'users': [
-      '46d6f992-5729-4588-b7f8-ce74f21157ba',
-      '6124d4e8-77ed-4b34-868d-d312bfab5de2'
-    ],
-    'created_by': '77f4b102-9df5-43ba-966a-6f816806c5e2',
-    'created_at': '2018-04-11T00:04:45.012Z'
-  },
-  {
-    'uuid': '14c43a19-3938-41ec-90ca-9f09d9390a6f',
-    'title': 'et',
-    'users': [
-      '65a6eb21-67b5-45c3-9af7-faca2d9b60d4',
-      '3782c174-1f2c-4dc4-b75d-0bedf400e023'
-    ],
-    'created_by': 'afdb5033-5bcc-4cec-b932-353a83410b44',
-    'created_at': '2018-04-10T20:30:02.955Z'
+    'created_by': '60d07662-bfec-42c7-b044-c81bc4ff8c7a',
+    'created_at': '2019-10-25T10:35:26.982Z'
   },
   {
     'uuid': 'b42daaa7-ef3c-4cbe-89cc-52476f169232',
@@ -98,82 +39,60 @@ const Groups = [
     'users': [
       'afdb5033-5bcc-4cec-b932-353a83410b44'
     ],
-    'created_by': '36a1ead7-57a0-4275-8a21-956194ab7cdf',
-    'created_at': '2018-04-11T05:27:15.635Z'
+    'created_by': 'afdb5033-5bcc-4cec-b932-353a83410b44',
+    'created_at': '2019-10-24T05:27:15.635Z'
   },
-  {
-    'uuid': 'a4fb2a31-7e6f-4103-b512-3a0e1856b42d',
-    'title': 'totam',
-    'users': [
-      '65a6eb21-67b5-45c3-9af7-faca2d9b60d4',
-      '5c44b666-baca-4f18-a3cb-23068c6edc14',
-      '7d910620-84e1-49fc-951e-d375587b8189'
-    ],
-    'created_by': '60d07662-bfec-42c7-b044-c81bc4ff8c7a',
-    'created_at': '2018-04-10T14:47:13.370Z'
-  },
-  {
-    'uuid': 'b1f03c8b-837f-4579-a18b-974d3ce93f3b',
-    'title': 'placeat',
-    'users': [
-      '6a03248b-1752-4332-a3a9-7108528cc9d3',
-      '28d9f265-74d7-4f85-83d4-6a21fca57dcf',
-      '65a6eb21-67b5-45c3-9af7-faca2d9b60d4'
-    ],
-    'created_by': 'a41c6c4a-9cb1-45d1-8c6f-091044ba51ff',
-    'created_at': '2018-04-11T01:23:23.603Z'
-  }
 ];
 
 const Messages = [
   {
     'uuid': '2cc7e60b-a81b-4859-bb88-e894e11eb77d',
     'chatId': 'a44f8ade-513c-46b5-bae4-0acf809860e6',
-    'text': 'Ex laudantium veniam aut repellendus voluptatem vitae suscipit at quisquam.',
-    'userId': 'da95e977-cd54-4077-a767-1b7f33ef6919',
-    'created_at': '2018-04-10T18:42:25.141Z'
+    'text': '방송 안할때 뭐하세요?',
+    'userId': '5c44b666-baca-4f18-a3cb-23068c6edc14',
+    'created_at': '2019-10-31T09:39:34.913Z'
   },
   {
     'uuid': '2a2c7ea4-e2c1-47ac-8dc8-73ed074abb99',
     'chatId': 'a44f8ade-513c-46b5-bae4-0acf809860e6',
-    'text': 'Natus ex qui at in et porro.',
+    'text': '저 헬스장에서 살죠.',
     'userId': 'da95e977-cd54-4077-a767-1b7f33ef6919',
-    'created_at': '2018-04-10T09:39:34.913Z'
+    'created_at': '2019-10-31T09:39:36.913Z'
   },
   {
     'uuid': '063c9eb5-249a-4778-9367-ebfd33f69a4e',
     'chatId': 'a44f8ade-513c-46b5-bae4-0acf809860e6',
-    'text': 'Ut et qui unde nulla.',
-    'userId': 'da95e977-cd54-4077-a767-1b7f33ef6919',
-    'created_at': '2018-04-11T04:47:33.345Z'
+    'text': '닌텐도 스위치 가격 얼마임?',
+    'userId': '5c44b666-baca-4f18-a3cb-23068c6edc14',
+    'created_at': '2019-10-31T09:39:45.913Z'
   },
   {
     'uuid': '2ea77894-ae69-4a2b-9bf2-86b555f4d84b',
-    'chatId': 'c86f170d-9a36-4f2c-bb76-2de65aa8c7bf',
-    'text': 'Impedit sed ducimus ut suscipit nobis id.',
-    'userId': '46d6f992-5729-4588-b7f8-ce74f21157ba',
-    'created_at': '2018-04-10T23:11:40.311Z'
+    'chatId': 'a44f8ade-513c-46b5-bae4-0acf809860e6',
+    'text': '그 가격이면 뜨끈~~한 국밥이 50그릇이다.',
+    'userId': 'da95e977-cd54-4077-a767-1b7f33ef6919',
+    'created_at': '2019-10-31T09:39:47.913Z'
   },
   {
     'uuid': '09fc211d-e8a2-4bae-bb40-6a707c3c5eac',
-    'chatId': 'c86f170d-9a36-4f2c-bb76-2de65aa8c7bf',
-    'text': 'Quia laborum labore maiores magnam sint.',
-    'userId': '46d6f992-5729-4588-b7f8-ce74f21157ba',
-    'created_at': '2018-04-10T16:47:00.297Z'
+    'chatId': 'a44f8ade-513c-46b5-bae4-0acf809860e6',
+    'text': '링피트 언제 하실?',
+    'userId': '5c44b666-baca-4f18-a3cb-23068c6edc14',
+    'created_at': '2019-10-31T09:40:04.913Z'
   },
   {
     'uuid': '9150380c-7675-4780-8395-e1d6fa1749f7',
-    'chatId': 'c86f170d-9a36-4f2c-bb76-2de65aa8c7bf',
-    'text': 'Aut consectetur est eligendi impedit.',
-    'userId': '46d6f992-5729-4588-b7f8-ce74f21157ba',
-    'created_at': '2018-04-11T00:22:22.961Z'
+    'chatId': 'a44f8ade-513c-46b5-bae4-0acf809860e6',
+    'text': '고양이 키우세요?',
+    'userId': '5c44b666-baca-4f18-a3cb-23068c6edc14',
+    'created_at': '2019-10-31T09:40:18.913Z'
   },
   {
     'uuid': '757c2b29-5121-4c51-a9a0-390a537307bc',
-    'chatId': 'c86f170d-9a36-4f2c-bb76-2de65aa8c7bf',
-    'text': 'Recusandae voluptatibus nisi perferendis et ut quo repellat.',
-    'userId': '7d910620-84e1-49fc-951e-d375587b8189',
-    'created_at': '2018-04-10T14:30:41.149Z'
+    'chatId': 'a44f8ade-513c-46b5-bae4-0acf809860e6',
+    'text': '아니요. 저 고양이 털 알레르기 있어요.',
+    'userId': 'da95e977-cd54-4077-a767-1b7f33ef6919',
+    'created_at': '2019-10-31T09:59:19.913Z'
   },
   {
     'uuid': 'c06da098-5532-4b4b-95fe-f9cc9b64a44a',
@@ -192,16 +111,16 @@ const Messages = [
   {
     'uuid': '68863c56-f8bd-486b-a904-cf7abe788849',
     'chatId': '9c750cd1-a04d-4b9b-afe2-3e5f1b8d04fa',
-    'text': 'Est minima quo doloribus adipisci qui.',
-    'userId': '60d07662-bfec-42c7-b044-c81bc4ff8c7a',
-    'created_at': '2018-04-10T19:05:08.963Z'
+    'text': '오늘은 또 왜 지각함?',
+    'userId': '5c44b666-baca-4f18-a3cb-23068c6edc14',
+    'created_at': '2019-10-24T19:05:08.963Z'
   },
   {
     'uuid': '96d13a69-7bd1-4523-bd47-d9986d7819d0',
     'chatId': '9c750cd1-a04d-4b9b-afe2-3e5f1b8d04fa',
-    'text': 'Molestiae id amet tempore labore ipsam debitis.',
+    'text': '허허 그거에 대해선 심심한 사과의 말씀 올립니다. 자세한건 유튜브 참고해주세요^.^',
     'userId': '60d07662-bfec-42c7-b044-c81bc4ff8c7a',
-    'created_at': '2018-04-10T15:49:06.410Z'
+    'created_at': '2019-10-25T15:49:06.410Z'
   },
   {
     'uuid': '2657bfda-59df-43ec-baa5-bfad08c5c412',
@@ -339,9 +258,9 @@ const Messages = [
   {
     'uuid': 'fc273883-0360-42ab-ae03-53923c906a8c',
     'chatId': 'b42daaa7-ef3c-4cbe-89cc-52476f169232',
-    'text': 'Voluptas eligendi sit et.',
-    'userId': 'afdb5033-5bcc-4cec-b932-353a83410b44',
-    'created_at': '2018-04-10T08:50:09.825Z'
+    'text': '오늘 희성님이랑 듀오 하시나요?',
+    'userId': '5c44b666-baca-4f18-a3cb-23068c6edc14',
+    'created_at': '2019-10-24T08:50:09.825Z'
   },
   {
     'uuid': '4548dbd5-cd36-447e-9476-a831b5000ab3',
@@ -464,7 +383,7 @@ const Messages = [
   }
 ];
 
-// Add user to map 
+// Add user to map
 Messages.map((item) => {
   let tmp  = User().find(x => x.uuid === item.userId);
   item.user = {
